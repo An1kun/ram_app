@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ram_app/network/rick_and_morty_api.dart';
+import 'package:ram_app/presentation/app.dart';
 import 'package:ram_app/presentation/character_tab.dart';
 import 'package:ram_app/presentation/episode_tab.dart';
 import 'package:ram_app/presentation/location_tab.dart';
@@ -34,6 +35,14 @@ class _MainPageState extends State<MainPage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          Switch(
+            value: AppThemeProvider.of(context).appTheme.isDarkTheme,
+            onChanged: (value) {
+              AppThemeProvider.of(context).appTheme.toggleTheme(value);
+            },
+          ),
+        ],
         title: const Text('Rick and Morty App'),
         centerTitle: true,
         bottom: TabBar(
